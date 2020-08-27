@@ -1,0 +1,74 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+import ProductsScreen from './screens/ProductsScreen'
+import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import { useSelector } from 'react-redux';
+
+function App() {
+
+  const userSignin = useSelector(state => state.userSignin);
+  const {userInfo} = userSignin;
+  console.log(userInfo)
+  const openMenu = () => {
+    document.querySelector(".sidebar").classList.add("open");
+  } 
+
+  const closeMenu = () => {
+    document.querySelector(".sidebar").classList.remove("open");
+  } 
+  return (
+    <Router>
+      <div className="grid-container">
+          <header className="header">
+              <div className="brand">
+                  <button onClick={openMenu}>
+                      &#9776;
+                  </button>
+                  <Link to="/">&nbsp;{/*non-breaking space*/}E-Shop</Link>
+              </div>
+              <div className="header-links">
+                  <a href="cart.html">Cart &nbsp;&nbsp; </a>
+                {
+                userInfo ? 
+                <Link to="/profile"> {userInfo.name} </Link> :
+                <Link to="/signin">Sign In</Link>
+                }    
+              </div>
+              
+          </header>
+          <aside className="sidebar">
+              <h3>Shopping Categories</h3>
+              <button className="sidebar-close-button" onClick={closeMenu}>x</button>
+              <ul>
+                  <li>
+                      <a href="index.html">Pants</a>
+                  </li>
+                  <li>
+                      <a href="index.html">Shirts</a>
+                  </li>
+              </ul>
+          </aside>
+          <main>
+              <div className="content">
+                <Route path="/products" component = { ProductsScreen } />
+                <Route path="/signin" component = { SigninScreen } />
+                <Route path="/register" component = { RegisterScreen } />
+                <Route path="/product/:id" component={ProductScreen} />
+                <Route path="/cart/:id?" component={CartScreen} />
+                <Route path="/" exact={true} component={HomeScreen} />
+                
+              </div>  
+          </main>
+          <footer className="footer">
+              All right reserved.
+          </footer>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
