@@ -261,10 +261,10 @@ flex: 1 1 30rem;
 .cart-list-container {
   padding: 1rem;
 }
-.cart > .cart-list > .cart-list-container > li {
+.cart-list-container > li {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: .1rem #c0c0c0 solid;
@@ -276,13 +276,20 @@ flex: 1 1 30rem;
 .cart-list-container li:first-child {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  height: 4rem;
 }
 .cart-image{
   flex:1 1;
 }
 .cart-name{
   flex:8 1;
+}
+.cart-name div {
+  margin-top: 2rem;
+}
+.cart-name div button{
+  margin-left: 2rem;
 }
 .cart-price{
   flex:1 1;
@@ -313,7 +320,7 @@ flex: 1 1 30rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-form > .form-container /* li:first-child , li:nth-child(2)*/{
+form > .form-container {
   display:flex;
   flex-direction: column;
   margin: 2rem;
@@ -327,7 +334,9 @@ input {
   border-radius: .5rem;
 }
 
+/*****************/
 /*** Produtcs ***/
+/*****************/
 
 .product-header {
   display: flex;
@@ -349,4 +358,77 @@ th {
 
 tbody > tr:nth-child(odd) {
   background-color: #f0f0f0;
+}
+/********************/
+/** Checkout Steps **/
+/********************/
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+
+.checkout-steps > div {
+  border-top: .3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1 1;
+  padding-top: 1rem;
+}
+
+.checkout-steps > div.active {
+  border-top: .3rem #f08000 solid;
+  color: #f08000;
+}
+
+/****************/
+/** Place Order */
+/****************/
+.placeorder {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  justify-content:space-between;
+}
+
+.placeorder-info {
+  flex: 3 1 60rem;
+}
+
+.placeorder-action {
+  flex: 1 1 20rem;
+  border: .1rem #c0c0c0 solid;
+  border-radius: .5rem;
+  background-color: #fcfcfc;
+  padding: 1rem ;
+}
+
+.placeorder-info > div {
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+  background-color: #fcfcfc;
+  padding: 0 2rem 2rem 2rem;
+  margin: 1rem 1rem  0;
+}
+.placeorder-info > div:first-child {
+  margin-top: 0;
+}
+
+.placeorder-action > ul  {
+   padding: 0 3rem;
+}
+.placeorder-action > ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 4rem;
+  margin-bottom: 1rem;
+}
+.placeorder-action > ul > li:last-child {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #c04000;
+}
+.placeorder-actions-payment > div {
+  width: 100%;
 }

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import {Link} from 'react-router-dom';
 
-export default function CartScreen(props) {
+ function CartScreen(props) {
 
     const cart = useSelector(state => state.cart);
     const {cartItems} = cart;
@@ -54,7 +54,7 @@ export default function CartScreen(props) {
                                              </Link>  
                                         </div>
                                         <div>
-                                            Qty:
+                                            Quantity: &nbsp;  
                                             <select value={item.qty} onChange={(e)=> dispatch(addToCart(item.product, e.target.value))}>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -89,3 +89,4 @@ export default function CartScreen(props) {
     )
 }
 
+export default CartScreen ;
